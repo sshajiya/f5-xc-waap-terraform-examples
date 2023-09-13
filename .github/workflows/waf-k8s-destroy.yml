@@ -445,6 +445,7 @@ jobs:
           }
           EOF
           echo "${{secrets.P12}}" | base64 -d > api.p12
+          cp ../../../../../xc/terraform.tfvars .
       - name: Terraform Init
         id: init
         run: |
