@@ -79,7 +79,9 @@ jobs:
       - name: Terraform Destroy
         if: github.ref == 'refs/heads/destroy-waf-k8s' && github.event_name == 'push'
         run: terraform destroy -auto-approve -input=false
-
+        env:
+          TF_VAR_site_name: ${{ secrets.TF_VAR_site_name }}
+          
   terraform_approve:
     name: "Site Offboarding"
     runs-on: ubuntu-latest
@@ -154,6 +156,8 @@ jobs:
       - name: Terraform Destroy
         if: github.ref == 'refs/heads/destroy-waf-k8s' && github.event_name == 'push'
         run: terraform destroy -auto-approve -input=false
+        env:
+          TF_VAR_site_name: ${{ secrets.TF_VAR_site_name }}
 
   terraform_ce:
     name: "CE Destroy"
@@ -200,7 +204,7 @@ jobs:
                config.yaml: |
                 Vpm:
                   # CHANGE ME
-                  ClusterName: ce-k8s
+                  ClusterName: ${{ secrets.TF_VAR_site_name }}
                   ClusterType: ce
                   Config: /etc/vpm/config.yaml
                   DisableModules: ["recruiter"]
@@ -498,3 +502,5 @@ jobs:
       - name: Terraform Destroy
         if: github.ref == 'refs/heads/destroy-waf-k8s' && github.event_name == 'push'
         run: terraform destroy -auto-approve -input=false
+        env:
+          TF_VAR_site_name: ${{ secrets.TF_VAR_site_name }}
