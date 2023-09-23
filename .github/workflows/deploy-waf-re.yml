@@ -1,7 +1,10 @@
 name: WAF on RE deploy
 
-on:  
-  workflow_dispatch:
+on:
+  push:
+    branches:
+      - deploy-waf-re
+  pull_request:
 
 jobs:
   deploy:
