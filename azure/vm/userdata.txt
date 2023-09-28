@@ -1,7 +1,12 @@
-# install docker
-snap install docker
+#!/bin/bash
 
-# deploy arcadia demo application
+# docker installation
+sudo apt update -y
+sudo apt install docker.io -y
+sudo service docker start
+sudo usermod -a -G docker ec2-user
+
+# commands to deploy arcadia
 docker network create internal
 docker run -dit -h mainapp --name=mainapp --net=internal registry.gitlab.com/arcadia-application/main-app/mainapp:latest
 docker run -dit -h backend --name=backend --net=internal registry.gitlab.com/arcadia-application/back-end/backend:latest

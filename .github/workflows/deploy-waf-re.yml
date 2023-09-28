@@ -77,11 +77,6 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
-        env:
-          TF_VAR_azure_subscription_id: ${{ secrets.TF_VAR_AZURE_SUBSCRIPTION_ID }}
-          TF_VAR_azure_subscription_tenant_id: ${{ secrets.TF_VAR_AZURE_SUBSCRIPTION_TENANT_ID }}
-          TF_VAR_azure_service_principal_appid: ${{ secrets.TF_VAR_AZURE_SERVICE_PRINCIPAL_APPID }}
-          TF_VAR_azure_service_principal_password: ${{ secrets.TF_VAR_AZURE_SERVICE_PRINCIPAL_PASSWORD }}
         if: github.ref == 'refs/heads/deploy-waf-re' && github.event_name == 'push'
         run: terraform apply -auto-approve -input=false
 
