@@ -42,3 +42,23 @@ output "arcadia_port" {
    value       = 8080
    description = "Arcadia application opened port"
 }
+
+output "project_prefix" {
+  value = var.project_prefix
+}
+output "build_suffix" {
+  value = random_id.build_suffix.hex
+}
+output "nap" {
+  value = var.nap
+}
+output "nic" {
+  value = var.nic
+}
+output "bigip" {
+  value = var.bigip
+}
+output "bigip-cis" {
+  value = var.bigip-cis
+}
+

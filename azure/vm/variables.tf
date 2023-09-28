@@ -20,3 +20,9 @@ variable "bigip" {
 variable "bigip-cis" {
   type = bool
 }
+
+variable "project_prefix" {
+  type        = string
+#  default     = "demo"
+  description = "This value is inserted at the beginning of each AWS object (alpha-numeric, no special character)"
+}
