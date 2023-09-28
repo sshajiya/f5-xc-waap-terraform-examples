@@ -13,8 +13,8 @@ xc_waf_blocking = true
 k8s_pool = "false"
 serviceName = ""
 serviceport = ""
-advertise_sites = ""
-http_only = ""
+advertise_sites = "false"
+http_only = "false"
 
 #XC AI/ML Settings for MUD, APIP - NOTE: Only set if using AI/ML settings from the shared namespace
 xc_app_type = []
