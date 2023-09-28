@@ -1,3 +1,8 @@
+# Create a random id
+resource "random_id" "build_suffix" {
+  byte_length = 2
+}
+
 #creating Resource Group
 resource "azurerm_resource_group" "rg" {
   name = var.resource
