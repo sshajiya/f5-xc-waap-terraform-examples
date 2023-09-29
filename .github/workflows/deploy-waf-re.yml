@@ -1,6 +1,6 @@
 name: WAF on RE deploy
 on: [push]
-#on:
+#on: 
 #  push:
 #    branches:
 #      - deploy-waf-re
