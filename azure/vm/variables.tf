@@ -5,7 +5,7 @@ variable "azure_region" {
 
 variable "resource" {
   description = "Default resources name"
-  default = "waf-re-jb"
+  default = "waf-re-shajiya"
 }
 
 variable "nap" {
