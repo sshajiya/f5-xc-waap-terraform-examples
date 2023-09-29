@@ -58,14 +58,27 @@ resource "volterra_http_loadbalancer" "lb_https" {
       }
       weight = 1
     }
-  https_auto_cert {
-    add_hsts = false
-    http_redirect = true
-    no_mtls = true
-    enable_path_normalize = true
-    tls_config {
+  
+  dynamic "http" {
+    for_each = var.http_only ? [1] : []
+    
+    content  {
+        dns_volterra_managed = true
+        port = "80"
+      }
+  }
+
+  dynamic "https_auto_cert" {
+    for_each = var.http_only ? [] : [1]
+    content {
+      add_hsts              = false
+      http_redirect         = true
+      no_mtls               = true
+      enable_path_normalize = true
+      tls_config {
         default_security = true
       }
+    }
   }
   app_firewall {
     name = volterra_app_firewall.waap-tf.name
