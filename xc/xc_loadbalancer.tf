@@ -63,14 +63,15 @@ resource "volterra_http_loadbalancer" "lb_https" {
   }
 
   dynamic "http" {
-    for_each = var.http_only ? [1] : [0]
+    for_each = var.http_only ? [1] : []
     content  {
+        dns_volterra_managed = true
         port = "80"
       }
   }
 
   dynamic "https_auto_cert" {
-    for_each = var.http_only ? [0] : [1]
+    for_each = var.http_only ? [] : [1]
     content {
       add_hsts              = false
       http_redirect         = true
