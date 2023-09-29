@@ -35,6 +35,22 @@ resource "volterra_http_loadbalancer" "lb_https" {
   description = format("HTTPS loadbalancer object for %s origin server", local.project_prefix)  
   domains = [var.app_domain]
   advertise_on_public_default_vip = true
+  
+  dynamic "advertise_custom" {
+    for_each = var.advertise_sites ? [1] : []
+    content {
+      advertise_where {
+        site {
+          site {
+            name      = var.site_name
+            namespace = "system"
+          }
+          network = "SITE_NETWORK_INSIDE_AND_OUTSIDE"
+        }
+      }
+    }
+  }
+
   default_route_pools {
       pool {
         name = volterra_origin_pool.op.name
