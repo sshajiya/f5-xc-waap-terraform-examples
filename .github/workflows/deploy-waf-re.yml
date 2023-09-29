@@ -1,10 +1,10 @@
 name: WAF on RE deploy
-
-on:
-  push:
-    branches:
-      - deploy-waf-re
-  pull_request:
+on: [push,pull_request]
+#on:
+#  push:
+#    branches:
+#      - deploy-waf-re
+#  pull_request:
 
 jobs:
   azure:
