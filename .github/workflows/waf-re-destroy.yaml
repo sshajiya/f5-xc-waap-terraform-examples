@@ -1,6 +1,6 @@
 name: "WAF RE Destroy"
 
-on: [pull_request]
+on: [push]
 #  push:
 #    branches:
 #      - destroy-waf-re
